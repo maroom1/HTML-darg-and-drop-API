@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drag and Drop API</title>
+    <style>
+    /* #div1, #div2{
+    float: inline-block;
+    width: 100px;
+    height: 70px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}*/
+#block_container {
+    text-align: center;
+}
+#block_container > div {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+    height: 70px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+#sideevent {
+  /* height:300px; */
+  width:450px;
+  background: tomato; 
+  position: absolute;
+  top: 150px;
+  left: 0%;  
+  margin-left: 0; 
+ }
+
+</style> 
+</head>
+<body>
+        <header style="text-align: center;">
+                <h1>Drag Drop Functionality assignment</h1>
+            </header>
+    <nav>
+        <a href="ex1.html">Example 1 </a> |
+        <a href="ex2.html">Example 2 </a> |
+
+        </nav>
+<div id="block_container">
+        <div id="div1"  role="box1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <img src="images/Angel-DarlingT.jpg" alt="angel darling flower" draggable="true" ondragstart="drag(event)" id="drag1" width="90" height="68">
+              </div>
+              
+              <div id="div2" role="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            
+</div>
+<div id="block_container">
+        <div id="div3" role="box3" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <img src="images/CalpolyT.jpg" alt="Calpoly flower" draggable="true" ondragstart="drag(event)" id="drag2" width="90" height="68">
+              </div>
+              
+              <div id="div4" role="box4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            
+</div>
+              
+<div id="block_container">
+        <div id="div5" role="box5" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <img src="images/Love-KnotT.jpg" alt="Love Flower" draggable="true" ondragstart="drag(event)" id="drag3" width="90" height="68">
+              </div>
+              
+              <div id="div6" role="box6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            
+</div>
+              
+<div id="block_container">
+        <div id="div7" role="box7" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <img src="images/Orange-StarinaT.jpg" draggable="true" alt="orange flower" ondragstart="drag(event)" id="drag4" width="90" height="68">
+              </div>
+              
+              <div id="div8" role="box8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            
+</div>
+              
+<div id="sideevent"> 
+<h3>Events</h3>
+<hr>
+<div id="eventsTriggering"></div>
+
+</div>
+
+        
+              <script>
+                  var appendevent = document.getElementById("eventsTriggering");
+                    function allowDrop(ev) {
+                        ev.preventDefault();
+                    }
+                    
+                    function drag(ev) {
+                        appendevent.innerHTML ="<p> Moving ->"+ document.getElementById(ev.target.id).alt +"</p>" + appendevent.innerHTML;
+                        ev.dataTransfer.setData("text", ev.target.id);
+                    }
+                    
+                    function drop(ev) {
+                        ev.preventDefault();
+                        var data = ev.dataTransfer.getData("text");
+
+                        appendevent.innerHTML = "<p> dragged from  "+ document.getElementById(document.getElementById(data).parentNode.id).getAttribute("role")+"  to " +document.getElementById(ev.target.id).getAttribute("role")+ "</p>"+appendevent.innerHTML;
+                        
+                        ev.target.appendChild(document.getElementById(data));
+                    }
+                    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+section {        
+
+    width:425px;
+    
+    height:200px           
+    
+    margin:0 auto;
+    
+    background:silver;          
+    
+    }    
+    
+    #dropBox {       
+    
+    width:425px;           
+    
+    height:425px;          
+    
+    background:red;        
+    
+    margin:20px auto;      
+    
+    }    
+    
+    #dragB {         
+    
+    margin-right:0px;      
+    
+    }    
+    
+    .dragMe {        
+    
+    width:200px;           
+    
+    height:200px;          
+    
+    background:green;            
+    
+    display:inline-block;        
+    
+    margin-right:20px;          
+    
+    }

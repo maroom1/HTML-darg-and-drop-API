@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<title>HTML5 - Drag and Drop API - Images</title> 
+
+<style>    
+
+img {
+
+      margin:2px 10px;
+
+}
+
+#drop {
+
+min-height:100px;
+
+width:300px;
+
+border:5px solid #000;
+
+font:0.875em Verdana, sans-serif;
+
+padding:10px;
+
+margin:5px;
+
+}
+
+</style> 
+
+</head> 
+
+<body>
+
+<h1>The Rose Garden</h1>
+
+<img src="images/Angel-DarlingT.jpg" width="90" height="68" alt="Angel Darling Rose">
+
+<img src="images/CalpolyT.jpg" width="90" height="68" alt="Calpoly Rose"> 
+
+<div id="drop"><strong>Shopping Cart (drag images here)</strong></div> 
+
+<script>
+
+var drop = document.getElementById('drop');
+
+drop.ondrop = function(event) {    
+
+this.innerHTML += '<p>' +event.dataTransfer.getData('Text') + '</p>'; 
+event.cancelBubble = true;
+
+var imgs = document.getElementsByTagName("img"), i = imgs.length;
+
+while (i--) {    
+
+imgs[i].ondragstart = function(event) {        
+
+               event = event || window.event;        
+
+   event.dataTransfer.setData('Text', this.getAttribute('alt'));
+
+}
+
+}
+
+}
+
+drop.ondragover = function() {return false;};
+
+</script>
+
+</body>
+
+</html>
